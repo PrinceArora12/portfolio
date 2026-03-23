@@ -465,7 +465,7 @@ nav {
 }
 
 .project-img-placeholder {
-    height: 150px;
+    height: auto;
     background: rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
@@ -473,6 +473,13 @@ nav {
     font-size: 3rem;
     color: rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid var(--card-border);
+}
+
+.project-img-placeholder img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
 }
 
 .project-info {
@@ -521,7 +528,42 @@ nav {
     color: var(--accent-1);
 }
 
+/* ===== CARD GRID (Achievements & Certifications) ===== */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.highlight-card {
+    padding: 2rem;
+    text-align: center;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    transition: 0.3s ease;
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px);
+}
+
 /* Experience */
+.experience-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.experience-container>div {
+    width: 100%;
+}
+
+.experience-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
 .experience-container .timeline-item {
     margin-bottom: 2rem;
 }
@@ -533,6 +575,111 @@ nav {
 .experience-container .timeline-content p:last-child {
     color: var(--text-secondary);
     margin-top: 0.5rem;
+}
+
+/* ===== NEW TIMELINE DESIGN ===== */
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.timeline-card {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    position: relative;
+}
+
+.timeline-left {
+    min-width: 140px;
+    font-weight: 500;
+    color: var(--accent-2);
+}
+
+.timeline-date {
+    font-size: 0.9rem;
+}
+
+.timeline-right {
+    flex: 1;
+    padding: 1.5rem;
+}
+
+/* Optional line effect */
+.timeline-card::before {
+    content: '';
+    position: absolute;
+    left: 110px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--card-border);
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+    .timeline-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .timeline-card::before {
+        display: none;
+    }
+
+    .timeline-left {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* ===== EDUCATION SECTION FIX ===== */
+
+#education .education-list {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#education .edu-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    backdrop-filter: blur(var(--glass-blur));
+    transition: 0.3s ease;
+}
+
+#education .edu-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-1);
+}
+
+#education .edu-item i {
+    font-size: 1.8rem;
+    color: var(--accent-1);
+    margin-top: 5px;
+}
+
+#education .edu-item h3 {
+    margin-bottom: 0.4rem;
+}
+
+#education .edu-item p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+#education .edu-item span {
+    font-size: 0.85rem;
+    color: var(--accent-2);
 }
 
 /* Contact Section */
@@ -650,4 +797,125 @@ footer {
     .hamburger {
         display: block;
     }
+}
+
+/* ================= FINAL FIX (PUT AT VERY END) ================= */
+
+#certifications .cert-row {
+    display: flex;
+    flex-wrap: wrap;
+    /* ✅ allows second line */
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+#certifications .cert-card {
+    width: 260px;
+    /* fixed width */
+    flex: 0 0 auto;
+}
+
+/* ===== CARD GRID (Achievements & Certifications) ===== */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+/* ================= ADD HERE ================= */
+
+/* Horizontal Certifications Row */
+/* ================= CERTIFICATIONS CLEAN FIX ================= */
+
+#certifications .cert-row {
+    display: flex;
+    flex-wrap: wrap;
+    /* ✅ multiple rows */
+    justify-content: center;
+    gap: 2rem;
+}
+
+#certifications .cert-card {
+    width: 280px;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Image container */
+.cert-img {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    /* ✅ prevents overflow */
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+/* Image styling */
+.cert-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* ✅ keeps image inside */
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Optional hover effect */
+.cert-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Hide scrollbar (optional) */
+.cert-row::-webkit-scrollbar {
+    height: 6px;
+}
+
+.cert-row::-webkit-scrollbar-thumb {
+    background: var(--accent-1);
+    border-radius: 10px;
+}
+
+/* Individual Cards */
+.cert-card {
+    min-width: 260px;
+    flex: 0 0 auto;
+    text-align: center;
+}
+
+/* ================= CERT MODAL ================= */
+
+.cert-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.cert-modal img {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 85%;
+    border-radius: 10px;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+/* Hover cursor */
+.cert-img img {
+    cursor: pointer;
 }
